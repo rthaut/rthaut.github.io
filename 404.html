@@ -6,9 +6,19 @@
 
 <body>
     <script>
-        if (window.location.href.indexOf('deviantart-filter') !== -1) {
-            window.location.replace(window.location.href.replace('deviantart-filter', 'deviantART-Filter'));
+        var redirects = [{
+            'regex': RegExp('deviantart-filter', 'gi'),
+            'replacement': 'deviantART-Filter'
+        }];
+
+        for (var i = 0; i < redirects.length; i++) {
+            if (redirects[i].regex.test(window.location.href)) {
+                window.location.replace(window.location.href.replace(redirects[i].regex, redirects[i].replacement));
+                return;
+            }
         }
+
+        window.location.replace('https://github.com/rthaut/');
     </script>
 </body>
 
