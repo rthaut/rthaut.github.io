@@ -7,14 +7,13 @@
 <body>
     <script>
         var redirects = [{
-            'regex': RegExp('deviantart-filter', 'gi'),
+            'regex': new RegExp('deviantart-filter', 'gi'),
             'replacement': 'deviantART-Filter'
         }];
 
         for (var i = 0; i < redirects.length; i++) {
             if (redirects[i].regex.test(window.location.href)) {
                 window.location.replace(window.location.href.replace(redirects[i].regex, redirects[i].replacement));
-                return;
             }
         }
 
