@@ -6,6 +6,8 @@
 
 <body>
     <script>
+        var redirect = 'https://github.com/rthaut/';
+
         var redirects = [{
             'regex': new RegExp('deviantart-filter', 'gi'),
             'replacement': 'deviantART-Filter'
@@ -13,11 +15,13 @@
 
         for (var i = 0; i < redirects.length; i++) {
             if (redirects[i].regex.test(window.location.href)) {
-                window.location.replace(window.location.href.replace(redirects[i].regex, redirects[i].replacement));
+                redirect = window.location.href.replace(redirects[i].regex, redirects[i].replacement);
+                break;
             }
         }
 
-        window.location.replace('https://github.com/rthaut/');
+        document.write('Redirecting to ' + redirect);
+        window.location.replace(redirect);
     </script>
 </body>
 
